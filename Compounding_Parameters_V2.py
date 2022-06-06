@@ -31,11 +31,11 @@ Compound_parameter_dataset=Compound_parameter_dataset.loc[
         (Compound_parameter_dataset['ComponentName'] == component_variable),:]
 
 
-compound_variable = st.selectbox(
-     'Please Select the Compound',Compound_parameter_dataset['Material'].unique().tolist())
+#compound_variable = st.selectbox(
+#     'Please Select the Compound',Compound_parameter_dataset['Material'].unique().tolist())
 
-Compound_parameter_dataset=Compound_parameter_dataset.loc[
-        (Compound_parameter_dataset['Material']==compound_variable),:]
+#Compound_parameter_dataset=Compound_parameter_dataset.loc[
+#        (Compound_parameter_dataset['Material']==compound_variable),:]
 
 
 
