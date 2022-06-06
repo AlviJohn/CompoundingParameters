@@ -23,7 +23,7 @@ st.title('Compounding Parameters')
 Compound_parameter_dataset = pd.read_csv('LIMS_analytical_dataset_V5.csv',encoding="cp1252") 
 
 
-#Compound_parameter_dataset['gt_date'] =  pd.to_datetime(Compound_parameter_dataset['gt_date'])
+#Compound_parameter_dataset['gt_date'] =  pd.to_datetime(Compound_parameter_dataset['gt_date'], format='%d-%m-%Y')
 
 
 component_variable = st.selectbox(
