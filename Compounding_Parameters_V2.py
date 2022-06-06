@@ -68,13 +68,7 @@ Compound_parameter_dataset=Compound_parameter_dataset.loc[
         (Compound_parameter_dataset[option] > 0),:]
 
 ###################################################################################
-metric_option = st.selectbox('Select the Metric',['RFPP Only', 'Imbalance only','Imbalance & RFPP'])
-if metric_option=='RFPP Only':
-    var1='Rejection_RFPP_Only'
-elif metric_option=='Imbalance only':
-    var1='Rejection_Imbalance_Only'
-elif metric_option=='Imbalance & RFPP':
-    var1='Rejection_RFPP_Imbalance'
+
 #################################################################################
 
 
