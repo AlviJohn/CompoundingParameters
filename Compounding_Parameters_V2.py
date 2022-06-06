@@ -20,7 +20,7 @@ from PIL import Image
 #######Setting the Basics for the Page
 st.set_page_config(page_title="Compounding_Parameters", page_icon="muscleman.jpg", layout="wide", initial_sidebar_state="auto")
 st.title('Compounding Parameters')
-Compound_parameter_dataset = pd.read_csv('LIMS_analytical_dataset_V4.csv',encoding="cp1252") 
+Compound_parameter_dataset = pd.read_csv('LIMS_analytical_dataset_V5.csv',encoding="cp1252") 
 
 
 
