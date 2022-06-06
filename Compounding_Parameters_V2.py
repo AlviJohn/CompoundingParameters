@@ -1,4 +1,9 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Fri Apr 29 09:33:42 2022
 
+@author: alvi
+"""
 import streamlit as st
 import numpy as np
 import pandas as pd
@@ -15,7 +20,7 @@ from PIL import Image
 #######Setting the Basics for the Page
 st.set_page_config(page_title="Compounding_Parameters", page_icon="muscleman.jpg", layout="wide", initial_sidebar_state="auto")
 st.title('Compounding Parameters')
-Compound_parameter_dataset = pd.read_csv('compound_properties_trend.csv',encoding="cp1252") 
+Compound_parameter_dataset = pd.read_csv('LIMS_analytical_dataset_V4.csv',encoding="cp1252") 
 
 
 
@@ -34,6 +39,15 @@ Compound_parameter_dataset=Compound_parameter_dataset.loc[
 
 
 
+################################################################################################################
+compoundcode_variable = st.selectbox(
+     'Please Select the Compound Code',Compound_parameter_dataset['BanburyMaterialCode'].unique().tolist())
+
+Compound_parameter_dataset=Compound_parameter_dataset.loc[
+        (Compound_parameter_dataset['BanburyMaterialCode']==compoundcode_variable),:]
+
+############################################################################################################
+
 Variables = [
 'PMDRMH_Actual',
 'PMDRT90_Actual',
@@ -41,6 +55,7 @@ Variables = [
 'PMV_Actual',
 'PT35_Actual',
 'PT5_Actual',
+'PSPGR_Actual'
 ]
 
 option = st.selectbox(
@@ -64,6 +79,7 @@ elif metric_option=='Imbalance & RFPP':
 Compound_parameter_dataset_1sttest = Compound_parameter_dataset.loc[Compound_parameter_dataset['timeperiod'].isin(['Test 1','Control 1']),:]
 Compound_parameter_dataset_2ndtest = Compound_parameter_dataset.loc[Compound_parameter_dataset['timeperiod'].isin([ 'Test 2','Control 2']),:]
 
+#Compound_parameter_dataset_2ndtest =Compound_parameter_dataset
 ##########Charts#########################
 var = option
 upper = option.replace("_Actual", "_Upper_Spec")
@@ -78,8 +94,12 @@ temp2_minmax=Compound_parameter_dataset_2ndtest.groupby(['gt_date','timeperiod']
                     agg({upper:'max', lower:'min'}).\
                     reset_index()
 
+  
+#temp2_minmax=Compound_parameter_dataset.groupby(['gt_date','timeperiod']).\
+#                    agg({upper:'max', lower:'min'}).\
+#                    reset_index()
                     
-fig = px.box(Compound_parameter_dataset_1sttest, y=var, x="gt_date")
+fig = px.box(Compound_parameter_dataset_1sttest, y=var, x="gt_date",color='BanburyMaterialCode')
 fig.update_layout(title_text= str(var) + " VS Rejection Time Series(Test-30Mar to 3Apr,Control-25Mar to 29Mar(5days)")
 fig.add_scatter(x=temp1_minmax['gt_date'], y=temp1_minmax[lower],mode ='markers',name='lower spec')
 fig.add_scatter(x=temp1_minmax['gt_date'], y=temp1_minmax[upper],mode ='markers',name='upper spec')
@@ -87,7 +107,7 @@ st.plotly_chart(fig,use_container_width=True)
 
 
 #*************************************************************************************************
-fig = px.box(Compound_parameter_dataset_2ndtest, y=var, x="gt_date")
+fig = px.box(Compound_parameter_dataset_2ndtest, y=var, x="gt_date",color='BanburyMaterialCode')
 fig.update_layout(title_text= str(var) + " VS Rejection Time Series(Test-24Apr to 1May,Control-17Apr to 23Apr(7days)")
 fig.add_scatter(x=temp2_minmax['gt_date'], y=temp2_minmax[lower],mode ='markers',name='lower spec')
 fig.add_scatter(x=temp2_minmax['gt_date'], y=temp2_minmax[upper],mode ='markers',name='upper spec')
