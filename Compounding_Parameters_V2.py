@@ -51,14 +51,26 @@ Compound_parameter_dataset=Compound_parameter_dataset.loc[
 ############################################################################################################
 
 Variables = [
+'P100MOD_Actual',
+'P10MOD_Actual',
+'P300MOD_Actual',
+'PDISP30X_Actual',
+'PEB_Actual',
+'PHARD_Actual',
 'PMDRMH_Actual',
+'PMDRML_Actual',
+'PMDRT10_Actual',
+'PMDRT2_Actual',
+'PMDRT50_Actual',
 'PMDRT90_Actual',
 'PMIV_Actual',
+'PML4_Actual',
 'PMV_Actual',
+'PRBRESIL_Actual',
+'PSPGR_Actual',
 'PT35_Actual',
 'PT5_Actual',
-'PSPGR_Actual'
-]
+'PTENSTG_Actual']
 
 option = st.selectbox(
      'Please Select the Variable',Variables)
