@@ -110,7 +110,7 @@ temp_minmax=Compound_parameter_dataset.groupby(['gt_date','timeperiod']).\
      
 #*************************************************************************************************
 fig = px.box(Compound_parameter_dataset, y=var, x="gt_date",color='BanburyMaterialCode')
-fig.update_layout(title_text= str(var) + "Time Series)")
+fig.update_layout(title_text= str(var) + "Time Series")
 fig.add_scatter(x=temp_minmax['gt_date'], y=temp_minmax[lower],mode ='markers',name='lower spec')
 fig.add_scatter(x=temp_minmax['gt_date'], y=temp_minmax[upper],mode ='markers',name='upper spec')
 st.plotly_chart(fig,use_container_width=True) 
