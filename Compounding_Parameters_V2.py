@@ -110,13 +110,13 @@ temp_minmax=Compound_parameter_dataset.groupby(['gt_date','timeperiod']).\
      
 #*************************************************************************************************
 fig = px.box(Compound_parameter_dataset, y=var, x="gt_date",color='BanburyMaterialCode')
-fig.update_layout(title_text= str(var) + " VS Rejection Time Series)")
+fig.update_layout(title_text= str(var) + "Time Series)")
 fig.add_scatter(x=temp_minmax['gt_date'], y=temp_minmax[lower],mode ='markers',name='lower spec')
 fig.add_scatter(x=temp_minmax['gt_date'], y=temp_minmax[upper],mode ='markers',name='upper spec')
 st.plotly_chart(fig,use_container_width=True) 
      
 fig = px.box(Compound_parameter_dataset_1sttest, y=var, x="gt_date",color='BanburyMaterialCode')
-fig.update_layout(title_text= str(var) + " VS Rejection Time Series(Test-30Mar to 3Apr,Control-25Mar to 29Mar(5days)")
+fig.update_layout(title_text= str(var) + " Time Series(Test-30Mar to 3Apr,Control-25Mar to 29Mar(5days)")
 fig.add_scatter(x=temp1_minmax['gt_date'], y=temp1_minmax[lower],mode ='markers',name='lower spec')
 fig.add_scatter(x=temp1_minmax['gt_date'], y=temp1_minmax[upper],mode ='markers',name='upper spec')
 st.plotly_chart(fig,use_container_width=True)
@@ -124,7 +124,7 @@ st.plotly_chart(fig,use_container_width=True)
 
 #*************************************************************************************************
 fig = px.box(Compound_parameter_dataset_2ndtest, y=var, x="gt_date",color='BanburyMaterialCode')
-fig.update_layout(title_text= str(var) + " VS Rejection Time Series(Test-24Apr to 1May,Control-17Apr to 23Apr(7days)")
+fig.update_layout(title_text= str(var) + " Time Series(Test-24Apr to 1May,Control-17Apr to 23Apr(7days)")
 fig.add_scatter(x=temp2_minmax['gt_date'], y=temp2_minmax[lower],mode ='markers',name='lower spec')
 fig.add_scatter(x=temp2_minmax['gt_date'], y=temp2_minmax[upper],mode ='markers',name='upper spec')
 st.plotly_chart(fig,use_container_width=True)
